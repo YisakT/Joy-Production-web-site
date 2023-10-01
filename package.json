@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@mantine/core": "^7.1.0",
+    "@mantine/hooks": "^7.1.0",
+    "@mantine/notifications": "^7.1.0"
+  }
+}
