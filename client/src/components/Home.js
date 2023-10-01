@@ -1,9 +1,11 @@
 import React from 'react';
 
-const Home = () => {
+function Home() {
     return (
-        <div>
-            <h1>Home Page</h1>
+        <div className="home">
+            <h1>Welcome to Joy Production</h1>
+            <p>Overview and statistics here...</p>
+            {/* You can add more introductory content or graphics */}
         </div>
     );
 }
