@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function CustomersList() {
     const [customers, setCustomers] = useState([]);
 
     useEffect(() => {
         // Fetch the customers from your backend API here
-        // and set them in the customers state
-        // For demonstration purposes, I'll use dummy data
-        setCustomers([{id: 1, name: "John Doe"}, {id: 2, name: "Jane Smith"}]);
+        axios.get('/api/customers')
+            .then(response => {
+                // Update the state with the fetched customers
+                setCustomers(response.data);
+            })
+            .catch(error => {
+                // Handle any errors here, e.g., display an error message
+                console.error('Error fetching customers:', error);
+            });
     }, []);
 
     return (

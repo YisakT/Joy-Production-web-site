@@ -1,7 +1,7 @@
 from flask import Flask
 import os
 from dotenv import load_dotenv
-from models import db, Customer, Project, Invoice, Feedback, Portfolio, Booking, License, Contract, Equipment, Employee
+from routes import db, Customer, Project, Invoice, Feedback, Portfolio, Booking, License, Contract, Equipment, Employee
 
 # Load environment variables from .env file
 load_dotenv()
