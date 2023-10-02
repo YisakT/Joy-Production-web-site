@@ -1,7 +1,10 @@
-import { Container, Paper, Text } from "@mantine/core";
+import React from "react";
+import { Container, Paper, Text, useMantineTheme } from "@mantine/core";
 import { Link } from "react-router-dom";
 
 function Layout({ children }) {
+  const theme = useMantineTheme();
+
   return (
     <Container size={1200} style={{ marginTop: "20px" }}>
       <div style={{ display: "flex" }}>
@@ -10,14 +13,24 @@ function Layout({ children }) {
             width: "240px",
             marginRight: "20px",
             padding: "20px",
-            backgroundColor: "var(--mantine-color-scheme-dark-background)",
+            backgroundColor:
+              theme.colorScheme === "dark"
+                ? theme.colors.dark[7] // Dark background color
+                : theme.colors.gray[0], // Light background color
+            color:
+              theme.colorScheme === "dark"
+                ? theme.colors.dark[0] // Dark text color
+                : theme.colors.gray[9], // Light text color
           }}
         >
           <Text
             size="xl"
             style={{
               marginBottom: "20px",
-              color: "var(--mantine-color-scheme-dark-text)",
+              color:
+                theme.colorScheme === "dark"
+                  ? theme.colors.dark[0] // Dark text color
+                  : theme.colors.gray[9], // Light text color
             }}
           >
             Menu
