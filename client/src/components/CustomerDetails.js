@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function CustomerDetails({ match }) {
     const [customer, setCustomer] = useState(null);
 
     useEffect(() => {
         // Fetch the customer details using match.params.id from your backend API
-        // and set them in the customer state
-        // For demonstration, using dummy data:
-        setCustomer({id: match.params.id, name: "John Doe", bookings: [], feedbacks: []});
+        axios.get(`/api/customers/${match.params.id}`)
+            .then(response => {
+                // Set the fetched customer data in the state
+                setCustomer(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching customer details:', error);
+            });
     }, [match.params.id]);
 
     if (!customer) return <div>Loading...</div>;

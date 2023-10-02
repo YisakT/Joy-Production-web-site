@@ -1,13 +1,32 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+
 
 function AddEditCustomer(props) {
     const [name, setName] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Post the data to your backend API here
-        console.log("Submitted", { name });
+        // Create a data object to send to the backend
+        const data = {
+            name: name
+            // Add other fields as needed
+        };
+    
+        // Make a POST request to create a new customer
+        axios.post('/api/customers', data)
+            .then(response => {
+                // Handle the response data if needed
+                console.log('Customer created successfully:', response.data);
+    
+                // Optionally, you can redirect the user to another page or perform any other action
+            })
+            .catch(error => {
+                // Handle any errors
+                console.error('Error creating customer:', error);
+            });
     };
+    
 
     return (
         <div className="add-edit-customer">
