@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-
+from sqlalchemy import String, Integer, Column,Float
 
 
 
@@ -23,6 +23,8 @@ class Customer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=True)
+    phone_number = Column(String(20))
+    
     # Add other fields as needed
     feedbacks = db.relationship('Feedback', backref='customer', lazy=True)
     bookings = db.relationship('Booking', backref='customer', lazy=True)
@@ -43,6 +45,11 @@ class Project(db.Model):
 # Invoice Model
 class Invoice(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    project_id = db.Column(db.Integer, db.ForeignKey('project.id'))  
+    total_cost = db.Column(Float)
+    deposit = db.Column(Float)
+    ...
+
     # Add invoice fields
 
 # Feedback Model
@@ -79,11 +86,18 @@ class Contract(db.Model):
 # Equipment Model
 class Equipment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    # Add equipment fields
-    projects = db.relationship('Project', secondary=equipment_projects, backref=db.backref('equipments', lazy='dynamic'))
+    camera_model = Column(String(100))  
+    extra_equipment = Column(String(255))
+    
+    # Rename the projects attribute
+    associated_projects = db.relationship('Project', secondary=equipment_projects, backref=db.backref('associated_equipments', lazy='dynamic'))
 
+# Employee Model
 # Employee Model
 class Employee(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    # Add employee fields
-    projects = db.relationship('Project', secondary=employee_projects, backref=db.backref('employees', lazy='dynamic'))
+    name = Column(String(50))
+    email = Column(String(100))
+    phone_number = Column(String(20))
+    # Rename the projects attribute
+    associated_projects = db.relationship('Project', secondary=employee_projects, backref=db.backref('associated_employees', lazy='dynamic'))

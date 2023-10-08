@@ -3,10 +3,10 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import os
 from models import Customer, Project, Invoice, Feedback, Portfolio, Booking, License, Contract, Equipment, Employee
+from flask_cors import CORS
 
 
-
-
+CORS(app)
 
 @app.route('/api/login', methods=['POST'])
 def login():
