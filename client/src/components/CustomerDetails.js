@@ -33,9 +33,23 @@ function CustomerDetails() {
             });
     };
 
+    const backgroundImageUrl = "https://drive.google.com/uc?id=1Ctz6kHRpXaGGP9O-X9Y5k8WQOM8Q0C1O";
+
+    const containerStyle = {
+        backgroundImage: `url(${backgroundImageUrl})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: 'white',
+    };
+
     if (!customer) {
         return (
-            <div className="customer-details">
+            <div className="customer-details" style={containerStyle}>
                 <h2>Customer Details</h2>
                 <div>
                     <input
@@ -52,7 +66,7 @@ function CustomerDetails() {
     }
 
     return (
-        <div className="customer-details">
+        <div className="customer-details" style={containerStyle}>
             <h2>{customer.name}</h2>
             {/* Display other customer information here */}
         </div>

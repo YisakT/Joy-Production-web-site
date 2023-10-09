@@ -19,10 +19,24 @@ function CustomersList() {
             });
     }, []);
 
+    const backgroundImageUrl = "https://drive.google.com/uc?id=14Sc67qkE_D4F0S8l4YrBwbuKpnUE1BrM";
+
+    const containerStyle = {
+        backgroundImage: `url(${backgroundImageUrl})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start', // Align content to the top-left
+        color: 'white',
+        padding: '20px',
+    };
+
     return (
-        <div className="customers-list">
+        <div className="customers-list" style={containerStyle}>
             <h2>All Customers</h2>
-            <ul>
+            <ul style={{ listStyle: 'disc' }}>
                 {customers.map(customer => (
                     <li key={customer.id}>{customer.name}</li>
                 ))}

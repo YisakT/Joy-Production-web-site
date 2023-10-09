@@ -1,30 +1,46 @@
-// components/Login.js
 import React from "react";
 import { Container, Paper, Text, Grid } from "@mantine/core";
-import { SignIn, SignedIn, SignedOut, UserButton, useUser } from "@clerk/clerk-react";
+import { SignIn, SignedIn, SignedOut, UserButton,} from "@clerk/clerk-react";
 
 function Login() {
-  const { isSignedIn } = useUser();
+  
+
+  const backgroundImageUrl = "https://drive.google.com/uc?id=17U3IvFKR39bqQZYL71HRBAsKl2bFHAoA";
+
+  const containerStyle = {
+    backgroundImage: `url(${backgroundImageUrl})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    minHeight: '100vh', 
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'white',
+    padding: '20px', 
+  };
 
   return (
-    <Container size={400} style={{ marginTop: "50px" }}>
-      <Paper padding="md" shadow="xs">
-        <Text align="center" size="xl">
-          Login
-        </Text>
-        <Grid gutter="md">
-          {/* Show different content based on whether the user is signed in or not */}
-          <SignedOut>
-            <SignIn routing="path" path="/login" />
-          </SignedOut>
-          <SignedIn>
-            <Text align="center">
-              You are already signed in. <UserButton />
-            </Text>
-          </SignedIn>
-        </Grid>
-      </Paper>
-    </Container>
+    <div style={containerStyle}>
+      <Container size={400}>
+        <Paper padding="md" shadow="xs" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
+          <Text align="center" size="xl">
+            Login
+          </Text>
+          <Grid gutter="md">
+            {/* Show different content based on whether the user is signed in or not */}
+            <SignedOut>
+              <SignIn routing="path" path="/login" />
+            </SignedOut>
+            <SignedIn>
+              <Text align="center">
+                You are already signed in. <UserButton />
+              </Text>
+            </SignedIn>
+          </Grid>
+        </Paper>
+      </Container>
+    </div>
   );
 }
 

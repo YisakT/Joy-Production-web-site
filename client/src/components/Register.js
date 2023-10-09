@@ -8,49 +8,69 @@ const RegistrationForm = () => {
     console.log('Registration successful');
   };
 
+  const outerContainerStyle = {
+    backgroundImage: 'url("https://drive.google.com/uc?id=1e9WVpfwLIM9_14YJT4qL2rUF44dT9IyR")',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    minHeight: '100vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  };
+
+  const innerContainerStyle = {
+    maxWidth: 'sm',
+  };
+
+  const paperStyle = {
+    padding: '2rem',
+  };
+
   return (
-    <Container maxWidth="sm">
-      <Paper elevation={3} sx={{ padding: '2rem', marginTop: '2rem' }}>
-        <Typography variant="h5" component="div" gutterBottom>
-          Register
-        </Typography>
-        {/* Your existing registration form fields */}
-        <TextField
-          id="username"
-          label="Username"
-          variant="outlined"
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          id="email"
-          label="Email"
-          variant="outlined"
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          id="password"
-          label="Password"
-          type="password"
-          variant="outlined"
-          fullWidth
-          margin="normal"
-        />
+    <div style={outerContainerStyle}>
+      <Container maxWidth="sm" sx={innerContainerStyle}>
+        <Paper elevation={3} sx={paperStyle}>
+          <Typography variant="h5" component="div" gutterBottom>
+            Register
+          </Typography>
+          {/* Your existing registration form fields */}
+          <TextField
+            id="username"
+            label="Username"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            id="email"
+            label="Email"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            id="password"
+            label="Password"
+            type="password"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+          />
 
-        {/* Clerk SignUp component */}
-        <SignUp onSuccess={handleRegistrationSuccess} />
+          {/* Clerk SignUp component */}
+          <SignUp onSuccess={handleRegistrationSuccess} />
 
-        <Button
-          variant="contained"
-          color="primary"
-          fullWidth
-          sx={{ marginTop: '1rem' }}
-        >
-          Register
-        </Button>
-      </Paper>
-    </Container>
+          <Button
+            variant="contained"
+            color="primary"
+            fullWidth
+            sx={{ marginTop: '1rem' }}
+          >
+            Register
+          </Button>
+        </Paper>
+      </Container>
+    </div>
   );
 };
 
