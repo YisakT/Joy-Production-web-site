@@ -44,7 +44,10 @@ function Layout({ children }) {
           <Link to="/login">Login</Link>
           <br />
           <Link to="/register">Register</Link>
-          {/* Add other links as needed */}
+          <Link to="/customers">Customers List</Link><br />
+          <Link to="/add-customer">Add/Edit Customer</Link><br />
+          <Link to="/customer/:id">Customer Details</Link><br />
+  
         </Paper>
         <div style={{ flex: 1 }}>{children}</div>
       </div>
