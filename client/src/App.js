@@ -7,9 +7,10 @@ import UserProfile from "./components/UserProfile";
 import Posts from "./components/Posts";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import AddEditCustomer from "./components/AddEditCustomer"; // Newly added
-import CustomerDetails from "./components/CustomerDetails"; // Newly added
-import CustomersList from "./components/CustomersList"; // Newly added
+import AddEditCustomer from "./components/AddEditCustomer"; 
+import CustomerDetails from "./components/CustomerDetails"; 
+import CustomersList from "./components/CustomersList"; 
+import Reviews from "./components/Reviews"; // Newly added
 import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
 import "./styles.css";
 import theme from "./theme";
@@ -29,9 +30,10 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/profile" element={<UserProfile />} />
               <Route path="/posts" element={<Posts />} />
+              <Route path="/reviews" element={<Reviews />} /> {/* Newly added */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              <Route path="/add-customer" element={<AddEditCustomer />} /> 
+              <Route path="/add-customer" element={<AddEditCustomer />} />
               <Route path="/customer/:id" element={<CustomerDetails />} />
               <Route path="/customers" element={<CustomersList />} /> 
               <Route

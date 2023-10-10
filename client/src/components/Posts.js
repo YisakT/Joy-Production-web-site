@@ -1,21 +1,34 @@
 import React, { useState } from 'react';
-import { Button, Container } from '@mantine/core';
+import { Button, Container, TextInput } from '@mantine/core';  
+import axios from 'axios';
 
 const Post = () => {
     const [review, setReview] = useState('');
+    const [reviewerName, setReviewerName] = useState('');  
 
     const handleReviewChange = (e) => {
         setReview(e.target.value);
     };
 
-    const handleSubmitReview = () => {
-        // You can handle the submission of the review here
-        console.log('Review:', review);
-        // You can send the review to the server or perform any other actions as needed
-        // Reset the review textarea after submission
-        setReview('');
+    const handleNameChange = (e) => {  
+        setReviewerName(e.target.value);
     };
 
+    const handleSubmitReview = () => {
+        const currentDate = new Date().toISOString(); 
+    
+        
+        axios.post('/api/reviews', { content: review, reviewer_name: reviewerName, date_posted: currentDate })
+            .then(response => {
+                console.log('Review saved:', response.data);
+                setReview('');  
+                setReviewerName('');  
+            })
+            .catch(error => {
+                console.error("Error saving review:", error);
+            });
+    };
+    
     const backgroundImageUrl =
         'https://drive.google.com/uc?id=1Ejj014R0h6pfM7LqEYRZGHbRozWxZuha';
 
@@ -41,6 +54,13 @@ const Post = () => {
     return (
         <Container style={containerStyle}>
             <h2>Posts</h2>
+            <TextInput
+                value={reviewerName}
+                onChange={handleNameChange}
+                placeholder="Reviewer's Name"
+                style={{ width: '45%', marginBottom: '10px' }}  
+            />
+            <br />
             <textarea
                 value={review}
                 onChange={handleReviewChange}

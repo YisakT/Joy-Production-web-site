@@ -41,9 +41,11 @@ function Layout({ children }) {
           <br />
           <Link to="/posts">Posts</Link>
           <br />
-          <Link to="/login">Login</Link>
+          <Link to="/reviews">Reviews</Link><br />
+
+          <Link to="/login">Login</Link><br />
           <br />
-          <Link to="/register">Register</Link>
+          <Link to="/register">Register</Link><br />
           <Link to="/customers">Customers List</Link><br />
           <Link to="/add-customer">Add/Edit Customer</Link><br />
           <Link to="/customer/:id">Customer Details</Link><br />

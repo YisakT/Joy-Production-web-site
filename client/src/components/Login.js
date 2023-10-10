@@ -28,7 +28,7 @@ function Login() {
             Login
           </Text>
           <Grid gutter="md">
-            {/* Show different content based on whether the user is signed in or not */}
+            
             <SignedOut>
               <SignIn routing="path" path="/login" />
             </SignedOut>

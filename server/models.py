@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import String, Integer, Column, Float, Date
-
+from datetime import datetime
 from app import db
 
 # Many-to-Many association tables
@@ -93,3 +93,12 @@ class Employee(db.Model):
     phone_number = Column(String(20))
     
     associated_projects = db.relationship('Project', secondary=employee_projects, back_populates='employees')
+
+
+
+
+class Review(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String(1000), nullable=False) 
+    reviewer_name = db.Column(db.String(150), nullable=False)  
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)  

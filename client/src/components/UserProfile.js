@@ -11,13 +11,13 @@ const UserProfile = () => {
     backgroundImage: `url(${backgroundImageUrl})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    minHeight: '100vh', // Set the minimum height to fill the viewport
+    minHeight: '100vh', 
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    color: 'white', // Text color
-    padding: '20px', // Add some padding for readability
+    color: 'white', 
+    padding: '20px', 
   };
 
   return (
@@ -30,7 +30,7 @@ const UserProfile = () => {
           <div>
             <Text>Name: {user.firstName} {user.lastName}</Text>
             <Text>Email: {user.email}</Text>
-            {/* You can display other user information here */}
+            
           </div>
         </div>
       ) : (
